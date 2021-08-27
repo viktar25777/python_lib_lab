@@ -1,0 +1,15 @@
+import numpy as np
+import pandas as pd
+a = [{"author_id": 1, "author_name": "Тургенев"}, {"author_id": 2, "author_name": "Чехов"}, {"author_id": 3, "author_name": "Островский"}]
+df = pd.DataFrame(a)
+
+b = [{"author_id": 1, "book_title": "Отцы и дети", "price": 450}, {"author_id": 1, "book_title": "Рудин", "price": 300}, {"author_id": 1, "book_title": "Дворянское гнездо", "price": 350}, {"author_id": 2, "book_title": "Толстый и тонкий", "price": 500}, {"author_id": 2, "book_title": "Дама с собачкой", "price": 450}, {"author_id": 3, "book_title": "Гроза", "price": 370}, {"author_id": 3, "book_title": "Таланты и поклонники", "price": 290}]
+df1 = pd.DataFrame(b)
+
+res = df.merge(df1, on=["author_id"])
+df2 = res.groupby("author_name").agg({"price": "min"}).rename(columns={"price": "min_price"})
+df3 = res.groupby("author_name").agg({"price": "max"}).rename(columns={"price": "max_price"})
+df4 = res.groupby("author_name").agg({"price":"mean"}).rename(columns={"price": "mean_price"})
+df5 = pd.concat([df2, df3, df4], axis = 1)
+print(df5)
+
