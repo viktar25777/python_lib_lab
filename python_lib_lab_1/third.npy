@@ -1,0 +1,12 @@
+import numpy as np
+n = 5
+a = np.array([ [1, 6], [2, 8], [3, 11], [3, 10], [1, 7] ])
+mean_a = a.mean()
+b = a - mean_a
+c = np.hsplit(b, 2)
+d = b[0]
+f = b[1]
+k = (d * f).sum()
+l = k / n-1
+print(l)
+
