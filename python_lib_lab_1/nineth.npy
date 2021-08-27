@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+a = [{"author_id": 1, "author_name": "Тургенев"}, {"author_id": 2, "author_name": "Чехов"}, {"author_id": 3, "author_name": "Островский"}]
+df = pd.DataFrame(a)
+b = [{"author_id": 1, "book_title": "Отцы и дети", "price": 450}, {"author_id": 1, "book_title": "Рудин", "price": 300}, {"author_id": 1, "book_title": "Дворянское гнездо", "price": 350}, {"author_id": 2, "book_title": "Толстый и тонкий", "price": 500}, {"author_id": 2, "book_title": "Дама с собачкой", "price": 450}, {"author_id": 3, "book_title": "Гроза", "price": 370}, {"author_id": 3, "book_title": "Таланты и поклонники", "price": 290}]
+df1 = pd.DataFrame(b)
+
+res = df.merge(df1, on=["author_id"])
+c = [{"cover": "твердая"}, {"cover": "мягкая"}, {"cover": "мягкая"}, {"cover": "твердая"}, {"cover": "твердая"}, {"cover": "мягкая"}, {"cover": "мягкая"}]
+df2 = pd.DataFrame(c, columns=["cover"])
+df3 = pd.concat([res, df2], axis = 1)
+print(df3)
+book_info = pd.pivot_table(res, values="price", index=["author_name"],
+                    aggfunc=np.sum, fill_value=0)
+print(book_info)
+book_info.to_pickle('book_info.pkl')
+book_info2 = pd.read_pickle('book_info.pkl')
+book_info==book_info2
+
+
+
+
