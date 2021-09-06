@@ -1,0 +1,5 @@
+import numpy as np
+a = np.arange(1, 121).ravel()
+b = np.linalg.matrix_rank(a)
+print(b)
+
