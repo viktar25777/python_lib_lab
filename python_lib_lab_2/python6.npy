@@ -1,0 +1,8 @@
+import numpy as np
+a = np.array([ [1, 2, 5, 8], [125, 584, 789, 888], [1254, 5894, 7894, 9999] ])
+print(a.reshape((3, -1)))
+print(a.reshape((4, -1)))
+print(a.reshape((1, -1)))
+print(a.reshape((-1, 3)))
+print(a.reshape((-1, 4)))
+
