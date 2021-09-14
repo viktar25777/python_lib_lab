@@ -1,0 +1,11 @@
+import numpy as np
+a = np.array([ [1, 2, 3,4], [25, 45, 78, 88], [123, 257, 789, 898], [1234, 1456, 5642, 9999] ])
+print(a)
+print(a.ravel())
+print(a.transpose())
+print(a.reshape((4, 4)))
+print(a.reshape((2, 8)))
+a.resize()
+print(a)
+
+
