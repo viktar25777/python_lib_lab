@@ -1,0 +1,7 @@
+import numpy as np
+a = np.arange(0.5, 4, 0.3)
+print(a)
+a.size
+b = a.ravel()
+print(b)
+b.size
