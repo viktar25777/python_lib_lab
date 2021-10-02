@@ -1,0 +1,8 @@
+import numpy as np
+a = np.arange(0, 12).reshape(4, 3)
+b = np.transpose(a)
+c = np.dot(a, b)
+print(
+c)
+print(np.linalg.det(c))
+
